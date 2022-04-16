@@ -8,16 +8,35 @@
 
   <script>
     // start with strings, numbers and booleans
+    let uno = 1;
+    let one = uno;
+    console.log(one, uno)
+    uno = 2;
+    console.log(one, uno);
+
+    let perro = "bulldog";
+    let dog = perro;
+    console.log(perro, dog);
+    perro = "pitbull"; 
+    console.log(perro, dog);
+
+    let wwe = false;
+    let box = wwe;
+    console.log(wwe, box)
+    wwe = true
+    console.log(wwe, box)
+
 
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
-
+    const gamers = players;
+    console.log(gamers, players)
     // You might think we can just do something like this:
-
+    gamers[2] = 'cr7';
     // however what happens when we update that array?
-
+    console.log(gamers, players)
     // now here is the problem!
 
     // oh no - we have edited the original array too!
@@ -25,12 +44,24 @@
     // Why? It's because that is an array reference, not an array copy. They both point to the same array!
 
     // So, how do we fix this? We take a copy instead!
-
+    const ballers = players.slice()
+    ballers[2]= 'messi';
+    console.log(ballers, players)
     // one way
 
     // or create a new array and concat the old one in
-
+    const sports = [].concat(players);
+    sports[2] = 'rodgers';
+    console.log(sports, players)
     // or use the new ES6 Spread
+
+    const athlets = [...players];
+    athlets[2] = 'cantu';
+    console.log(athlets, players)
+
+    const olimp = Array.from(players);
+    olimp[2] = 'bolt';
+    console.log(olimp, players)
 
     // now when we update it, the original one isn't changed
 
@@ -44,7 +75,29 @@
 
     // and think we make a copy:
 
+    const individual = person;
+
+    individual.heigth = "tall";
+
+    console.log(person);
+
     // how do we take a copy instead?
+
+    const clone = Object.assign({}, person, {weight:"fifty"})
+
+    console.log(person, clone);
+
+    const dec = Object.assign({}, person)
+
+    dec.nose = 'big';
+
+    console.log(person, dec);
+
+    const dec2 = JSON.parse(JSON.stringify(person))
+
+    dec2.hands = 'small';
+
+    console.log(person, dec2);
 
     // We will hopefully soon see the object ...spread
 
